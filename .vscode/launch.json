@@ -1,0 +1,41 @@
+// {workspaceFolder}表示在VSCode中打开的文件夹的路径，即database_connect_pool的路径
+// {workspaceRootFolderName}:表示workspace的文件夹名，也即database_connect_pool
+// {fileDirname}表示当前打开的文件所在的目录名
+// {fileBasenameNoExtension}表示当前打开的文件的文件名（不带文件扩展名后缀）
+{
+    "configurations": [
+        {
+            "name": "C/C++: g++ 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            // program指定可执行文件的路径：比如main.cpp编译后的main.exe文件路径
+            "program": "${workspaceFolder}/bin/database_connect_pool",
+            // 可执行文件所需的参数` ./main.exe parameter1 parameter2 `
+            "args": [],
+            "stopAtEntry": false,
+            // 启动时task工作的目录
+            // 如果在目录/home/devil/12345/xxx0下执行代码，执行命令为：python3 xxx1/xxx.py ，则当前工作目录为 /home/devil/12345/xxx0  
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            // 调试前，需要先执行任务名称为"C/C++: g++ 生成活动文件"的任务，以生成最新的可执行文件
+            "preLaunchTask": "cmake_Build",
+            // 指定GCC编译器的调试器gdb的路径
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ],
+    "version": "2.0.0"
+}

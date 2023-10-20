@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [    //（常用）运行项目包含.h头文件的目录，
+                "${workspaceFolder}/**", //此处会匹配工作文件下的所有文件
+                "/usr/include/**",
+                "/usr/local/include/**",
+            ],
+            "defines": [], //（常用）定义一些需要的变量，等价于在编译时写"-D变量"
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+            // 指定如下语句，就可以不用自己手动指定includePath和defines
+
+            // 法一：安装CMake Tools，并添加如下语句
+            // "configurationProvider": "ms-vscode.cmake-tools"
+
+            // 法二：不安装Cmake Tools，在CMakeLists.txt中添加SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+            //       这样就可以生成compile_commands.json文件，并在这里指定
+            // "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
