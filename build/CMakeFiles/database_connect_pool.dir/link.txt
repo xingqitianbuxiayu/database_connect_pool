@@ -1,0 +1,1 @@
+/usr/bin/g++  -std=c++11 -Wall -O2  -O0 -Wall -g2 -ggdb -gdwarf-2 CMakeFiles/database_connect_pool.dir/main.cpp.o CMakeFiles/database_connect_pool.dir/src/connectionPool.cpp.o CMakeFiles/database_connect_pool.dir/src/databaseConnect.cpp.o -o /root/database_connect_pool/bin/database_connect_pool  -ljsoncpp -lmysqlclient -lpthread 
