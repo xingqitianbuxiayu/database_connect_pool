@@ -27,12 +27,12 @@
 ### 踩坑
 ---
 #### 踩坑1：在项目中使用MySQL C API还需要安装mysql-devel
-1. 刚开始只通过安装了MySQL的服务器和客户端
+1. 刚开始只通过`yum install mysql-community-server`安装了MySQL的服务器和客户端
 2. 要想使用MySQL C API，在CentOS中需要通过`yum install mysql-devel`安装。ubuntu中需要安装libmysqlclient-dev
 #### 踩坑2：关于mysql-devel和jsoncpp安装之后，指定动态库文件
 1. Liunx系统中：存在于/usr/lib64和/usr/local/lib64下的库文件会被自动搜寻，无需手动指定这两个目录，使用时直接指定动态库名即可。
-    - mysql-devel安装完后，在**/usr/lib64/mysql**下有其库文件，在/usr/include/mysql下有其头文件。
-    - jsoncpp安装完之后，在**/usr/local/lib64/**下有其库文件，在/usr/local/include/json下有其头文件
+    - mysql-devel安装完后，在/usr/lib64/mysql下有其库文件，在/usr/include/mysql下有其头文件。
+    - jsoncpp安装完之后，在/usr/local/lib64/下有其库文件，在/usr/local/include/json下有其头文件
 2. 对于g++命令：`g++ main.cpp src/connectionPool.cpp src/databaseConnect.cpp -Iinclude -lmysqlclient -ljsoncpp -lpthread -o main -Wall -std=c++11`
     - 编译时找不到到动态库-lmysqlclient：需要将动态库文件链接到/usr/lib64/或/usr/local/lib64/目录下，不能在其子目录下。因此要使用`ln -s /usr/lib64/mysql/libmysqlclient.so.21.2.34 /usr/lib64/libmysqlclient.so`
     - 通过CMake在编译时不需要这样做。
